@@ -1,0 +1,51 @@
+<!-- templates/professores/lista.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Professores</title>
+    <link rel="stylesheet" th:href="@{/css/professores/style.css}">
+</head>
+
+<body>
+    <div>
+        <div class="titulo1">
+            <h1>Lista de Professores</h1>
+        </div>
+
+        <div class="titulo2">
+            <a href="/professores/novo">Cadastrar Novo Professor</a>
+        </div>
+
+        <div class="cadastro">
+            <table border="1" style="width: 100%; margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Formação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="professor : ${professores}">
+                        <td th:text="${professor.id}"></td>
+                        <td th:text="${professor.nome}"></td>
+                        <td th:text="${professor.email}"></td>
+                        <td th:text="${professor.telefone}"></td>
+                        <td th:text="${professor.formacao}"></td>
+                        <td>
+                            <a th:href="@{/professores/alterar/{id}(id=${professor.id})}">Alterar</a> 
+                            <a th:href="@{/professores/excluir/{id}(id=${professor.id})}">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

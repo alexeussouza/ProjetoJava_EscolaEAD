@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/lista/style.css}">
+</head>
+
+<body>
+
+    <div class="titulo1">
+        <h2>Novo Aluno</h2>
+    </div>
+
+    <div class="cadastro">
+        <form action="/alunos/salvar" method="post">
+            <label>Nome:</label> <input type="text" name="nome" required><br>
+            <label>Email:</label> <input type="email" name="email" required><br>
+            <label>Telefone:</label> <input type="text" name="telefone" required><br>
+            <label>Matrícula:</label> <input type="text" name="matricula" required><br>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+
+    <div class="titulo2">
+        <h1>Lista de Alunos</h1>
+    </div>
+
+    <div class="cadastro">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Matrícula</th>
+                <th>Ações</th>
+            </tr>
+            <tr th:each="aluno : ${alunos}">
+                <td th:text="${aluno.id}"></td>
+                <td th:text="${aluno.nome}"></td>
+                <td th:text="${aluno.email}"></td>
+                <td th:text="${aluno.telefone}"></td>
+                <td th:text="${aluno.matricula}"></td>
+                <td>
+                    <a th:href="@{/alunos/alterar/{id}(id=${aluno.id})}">Alterar</a> |
+                    <a th:href="@{/alunos/excluir/{id}(id=${aluno.id})}">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Turma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 th:if="${turma.id == null}">Nova Turma</h2>
+    <h2 th:if="${turma.id != null}">Alterar Turma</h2>
+
+    <form th:object="${turma}" th:action="${turma.id == null} ? @{/turmas/salvar} : @{/turmas/alterar/{id}(id=${turma.id})}" method="post">
+        
+        <!-- Turno -->
+        <div class="mb-3">
+            <label class="form-label">Turno</label>
+            <select class="form-select" th:field="*{turno}" required>
+                <option value="">Selecione o turno</option>
+                <option th:each="t : ${T(br.com.escolaEAD.enums.Turno).values()}"
+                        th:value="${t}" th:text="${t}"></option>
+            </select>
+        </div>
+
+        <!-- Professor -->
+        <div class="mb-3">
+            <label class="form-label">Professor</label>
+            <select class="form-select" th:field="*{professor.id}" required>
+                <option value="">Selecione um professor</option>
+                <option th:each="prof : ${professores}" 
+                        th:value="${prof.id}" 
+                        th:text="${prof.nome}"></option>
+            </select>
+        </div>
+
+        <!-- Alunos -->
+        <div class="mb-3">
+            <label class="form-label">Alunos</label>
+            <select class="form-select" multiple th:field="*{alunos}" required>
+                <option th:each="aluno : ${alunos}" 
+                        th:value="${aluno.id}" 
+                        th:text="${aluno.nome}"></option>
+            </select>
+            <small class="form-text text-muted">Segure CTRL para selecionar vários.</small>
+        </div>
+
+        <!-- Botões -->
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="/turmas" class="btn btn-secondary ms-2">Voltar</a>
+        </div>
+
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

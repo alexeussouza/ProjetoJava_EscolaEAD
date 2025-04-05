@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Turmas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/lista/style.css}">
+</head>
+<body>
+
+<div class="titulo1">
+    <h2>Nova Turma</h2>
+</div>
+
+<div class="cadastro">
+    <a href="/turmas/novo">Cadastrar Turma</a>
+</div>
+
+<div class="titulo2">
+    <h1>Lista de Turmas</h1>
+</div>
+
+<div class="cadastro">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Turno</th>
+            <th>Professor</th>
+            <th>Alunos</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="turma : ${turmas}">
+            <td th:text="${turma.id}"></td>
+            <td th:text="${turma.turno}"></td>
+            <td th:text="${turma.professor.nome}"></td>
+            <td>
+                <ul>
+                    <li th:each="aluno : ${turma.alunos}" th:text="${aluno.nome}"></li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{/turmas/alterar/{id}(id=${turma.id})}">Alterar</a>
+                <a th:href="@{/turmas/excluir/{id}(id=${turma.id})}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

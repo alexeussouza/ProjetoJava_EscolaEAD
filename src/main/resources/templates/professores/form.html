@@ -1,0 +1,33 @@
+<!-- templates/professores/form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Professor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Professor</h1>
+        <form th:action="@{/professores/salvar}" method="post" th:object="${professor}">
+            <!-- Campo escondido para enviar o ID quando for ALTERAR -->
+            <input type="hidden" th:field="*{id}">
+
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}" required>
+
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required>
+
+            <label>Telefone:</label>
+            <input type="text" th:field="*{telefone}" required>
+
+            <label>Formação:</label>
+            <input type="text" th:field="*{formacao}" required>
+
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="/professores">Voltar para a Lista</a>
+    </div>
+</body>
+</html>

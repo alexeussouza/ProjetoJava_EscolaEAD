@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Pessoa</h1>
+        
+        <!-- Formulário de Cadastro/Edição -->
+        <form th:object="${pessoa}" th:action="@{/pessoas/salvar}" method="post">
+            <!-- Campo oculto para armazenar o ID (necessário para edição) -->
+            <input type="hidden" th:field="*{id}" />
+
+            <label>Nome:</label> 
+            <input type="text" th:field="*{nome}" required /><br>
+
+            <label>Email:</label> 
+            <input type="email" th:field="*{email}" required /><br>
+
+            <label>Telefone:</label> 
+            <input type="text" th:field="*{telefone}" required /><br>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <br>
+        <a href="/pessoas">Voltar para a Lista</a>
+    </div>
+</body>
+</html>

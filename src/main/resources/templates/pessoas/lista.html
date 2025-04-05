@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+    <link rel="stylesheet" th:href="@{/css/pessoas/style.css}">
+</head>
+
+<body>
+    <div class="titulo1">
+        <h1>Lista de Pessoas</h1>
+    </div>
+    <div class="titulo2">
+        <h2>Cadastrar Nova Pessoa</h2>
+    </div>
+    <div class="cadastro">
+        <form action="/pessoas/salvar" method="post">
+            <label>Nome: <input type="text" name="nome"></label>
+            <label>Email: <input type="email" name="email"></label>
+            <label>Telefone: <input type="text" name="telefone"></label>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+    <section class="principal">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pessoa : ${pessoas}">
+                    <td th:text="${pessoa.id}"></td>
+                    <td th:text="${pessoa.nome}"></td>
+                    <td th:text="${pessoa.email}"></td>
+                    <td th:text="${pessoa.telefone}"></td>
+                    <td>
+                        <div class="form-lista">
+                            <section class="form">
+                            <form th:action="@{'/pessoas/alterar/' + ${pessoa.id}}" method="get" style="display:inline;">
+                                <input type="hidden" name="_method" value="alterar">
+                                <button type="submit">Alterar</button>
+                            </form>
+                        </section>
+                        <section class="form">
+    
+                            <form th:action="@{'/pessoas/excluir/' + ${pessoa.id}}" method="get" style="display:inline;">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </section>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+</html>
