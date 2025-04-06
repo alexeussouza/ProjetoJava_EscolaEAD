@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Aluno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
+    <div class="titulo1">
+        <h1 th:text="${#strings.isEmpty(aluno.id) ? 'Cadastrar Aluno' : 'Alterar Aluno'}"></h1>
+    </div>
 
-    <h1 th:text="${#strings.isEmpty(aluno.id) ? 'Cadastrar Aluno' : 'Alterar Aluno'}"></h1>
+    <div class="container">
 
-    <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
+        <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
 
-        <!-- Campo oculto para o id (necessário na alteração) -->
-        <input type="hidden" th:field="*{id}" />
+            <!-- Campo oculto para o id (necessário na alteração) -->
+            <input type="hidden" th:field="*{id}" />
 
-        <label>Nome:</label>
-        <input type="text" th:field="*{nome}" required><br><br>
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}" required><br><br>
 
-        <label>Email:</label>
-        <input type="email" th:field="*{email}" required><br><br>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required><br><br>
 
-        <label>Telefone:</label>
-        <input type="text" th:field="*{telefone}" required><br><br>
+            <label>Telefone:</label>
+            <input type="text" th:field="*{telefone}" required><br><br>
 
-        <label>Matrícula:</label>
-        <input type="text" th:field="*{matricula}" required><br><br>
+            <label>Matrícula:</label>
+            <input type="text" th:field="*{matricula}" required><br><br>
 
-        <button type="submit">Salvar</button>
+            <!-- Botões -->
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+                <a href="/alunos" class="btn btn-secondary ms-2">Voltar</a>
+            </div>
+    </div>
     </form>
 
-    <br>
-    <a href="/alunos">Voltar</a>
-
 </body>
+
 </html>

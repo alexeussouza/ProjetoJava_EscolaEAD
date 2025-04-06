@@ -1,12 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: 0;
+}
+
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: white;
+    margin: 0 auto;
+    width: 1200px;
+    height: 170vh;
+}
+
+.table{
+    border-collapse: collapse; /*define a separação entre as bordar*/
+    text-align: left;
+    border: 5px solid #218838;
 }
 
 .container {
@@ -15,14 +25,16 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
+    margin: 0 auto;
     max-width: 400px;
 }
 
 h1 {
-    background-color: darkgray;
+    background-color: #007bff;
     color: white;
     text-align: center;
     padding: 10px;
+    width: 98%;
     border-radius: 5px;
 }
 
@@ -33,41 +45,46 @@ form {
 
 label {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 input {
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-button {
-    margin-top: 15px;
+.botao{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.btn {
+
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    height: 45px;
+    padding: 15px 5px;
+    margin: 5px 10px;
+    width: 100px;
 }
 
-button:hover {
+.btn:hover {
     background-color: #218838;
+    color: #ccc;
 }
 
 a {
     display: block;
     text-align: center;
-    margin-top: 15px;
-    color: #007bff;
+    color: white;
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 .titulo{

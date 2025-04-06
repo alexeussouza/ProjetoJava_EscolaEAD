@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: white;
     margin: 0 auto;
     padding: 0;
     width: 1200px;
@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-    background-color: darkgray;
+    background-color: #007bff;
     color: white;
     text-align: center;
     padding: 10px;
@@ -80,18 +80,12 @@ a:hover {
     text-decoration: underline;
 }
 
-.principal{
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
 .titulo1{
     display: flex;
     margin: 0 auto;
     justify-content: center;
     margin-bottom: 5px;
+    width: 95%;
 }
 
 .titulo2{
@@ -107,4 +101,44 @@ a:hover {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    width: 98%;
+}
+
+.cadastro-novo{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 98%;
+    
+}
+
+.tabela-lista {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1060px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tabela-lista th, .tabela-lista td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabela-lista th {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabela-lista tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tabela-lista tr:hover {
+    background-color: #e0f7fa;
+    transition: 0.3s;
 }

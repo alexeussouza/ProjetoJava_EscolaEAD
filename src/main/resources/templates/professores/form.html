@@ -1,14 +1,19 @@
 <!-- templates/professores/form.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Professor</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
-    <div class="container">
+
+    <div class="titulo1">
         <h1>Cadastro de Professor</h1>
+    </div>
+    <div class="container">
         <form th:action="@{/professores/salvar}" method="post" th:object="${professor}">
             <!-- Campo escondido para enviar o ID quando for ALTERAR -->
             <input type="hidden" th:field="*{id}">
@@ -24,10 +29,13 @@
 
             <label>Formação:</label>
             <input type="text" th:field="*{formacao}" required>
-
-            <button type="submit">Salvar</button>
+            <div class="botao">
+                <button type="submit" class="btn">Salvar</button>
+                <button type="button" class="btn"><a href="/professores">Voltar</a></button>
+            </div>
         </form>
-        <a href="/professores">Voltar para a Lista</a>
+
     </div>
 </body>
+
 </html>
